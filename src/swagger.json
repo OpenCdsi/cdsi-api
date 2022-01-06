@@ -1,0 +1,342 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "<h3>Query Parameters</h3><p>The following query parameters can be added to the URL to adjust the response.</p><dl><dt>q</dt><dd>Return only the objects containing the given value.<i>&nbsp;&nbsp;/antigens/HepA/series?q=risk</i></dd></dl><dl><dt>fields</dt><dd>Return only the fields named in the parameter.<i>&nbsp;&nbsp;/antigens/HepA?fields=series</i></dd></dl>",
+    "version": "1.0.0",
+    "title": "CDSi Supporting Data API"
+  },
+  "basePath": "/api",
+  "schemes": ["https", "http"],
+  "paths": {
+    "/about": {
+      "get": {
+        "summary": "Get information about the API.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/antigens": {
+      "get": {
+        "summary": "Get the names of known antigens.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/antigens/{name}": {
+      "get": {
+        "summary": "Get an antigen by name.",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The name of the antigen."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The antigen name is unknown."
+          }
+        }
+      }
+    },
+    "/antigens/{name}/series": {
+      "get": {
+        "summary": "Get all series for this antigen.",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The name of the antigen."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The antigen name is unknown."
+          }
+        }
+      }
+    },
+    "/antigens/{name}/series/{id}": {
+      "get": {
+        "summary": "Get the identified series for this antigen.",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The name of the antigen."
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "The index or name of the desired series."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The antigen name is unknown or the ID is incorrect."
+          }
+        }
+      }
+    },
+    "/antigens/{name}/contraindications": {
+      "get": {
+        "summary": "Get the contraindications for the named antigen.",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The name of the antigen."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The antigen name is unknown."
+          }
+        }
+      }
+    },
+    "/observations/{code}": {
+      "get": {
+        "summary": "Get the identified observation.",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "type": "number",
+            "in": "path",
+            "description": "The observation code."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The observation code is unknown."
+          }
+        }
+      }
+    },
+    "/observations": {
+      "get": {
+        "summary": "Get the observation codes and descriptions.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/vaccines": {
+      "get": {
+        "summary": "Get the vaccine codes and descriptions.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/vaccines/{cvx}": {
+      "get": {
+        "summary": "Get the vaccine",
+        "parameters": [
+          {
+            "name": "cvx",
+            "required": true,
+            "type": "number",
+            "in": "path",
+            "description": "The cvx code of the vaccine."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The cvx code is unknown."
+          }
+        }
+      }
+    },
+    "/vaccines/{cvx}/conflicts": {
+      "get": {
+        "summary": "Get the live virus conflicts for this vaccine.",
+        "parameters": [
+          {
+            "name": "cvx",
+            "required": true,
+            "type": "number",
+            "in": "path",
+            "description": "The cvx code of the vaccine."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The cvx code is unknown."
+          }
+        }
+      }
+    },
+    "/vaccines/{cvx}/antigens": {
+      "get": {
+        "summary": "Get the antigens contained in the identifed vaccine.",
+        "parameters": [
+          {
+            "name": "cvx",
+            "required": true,
+            "type": "number",
+            "in": "path",
+            "description": "The cvx code of the vaccine."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The cvx code is unknown."
+          }
+        }
+      }
+    },
+    "/vaccines/groups": {
+      "get": {
+        "summary": "Get the vaccine group names.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/vaccines/groups/{name}": {
+      "get": {
+        "summary": "Get the named vaccine group.",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The name of the vaccine group."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The vaccine group is unknown."
+          }
+        }
+      }
+    },
+    "/vaccines/groups/{name}/antigens": {
+      "get": {
+        "summary": "Get the antigens included in the vaccine group.",
+        "parameters": [
+          {
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The name of the vaccine group."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The vaccine group is unknown."
+          }
+        }
+      }
+    },
+    "/testcases": {
+      "get": {
+        "summary": "Get a list of the testcases.",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/testcases/{id}": {
+      "get": {
+        "summary": "Get the identified testcase",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The CDC ID of the testcase"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The testcase ID is unknown"
+          }
+        }
+      }
+    },
+    "/testcases/{id}/medical": {
+      "get": {
+        "summary": "Get the medical data (patient, administered doses) for the identified testcase.",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "in": "path",
+            "description": "The CDC ID of the testcase."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "The testcase ID is unknown."
+          }
+        }
+      }
+    }
+  }
+}
