@@ -1,13 +1,9 @@
 # CDSi Support Data API
 
-## Live Site
-
-https://cdsi-api.herokuapp.com/api-docs/
-
 ## Quickstart
 
 ```bash
-git clone https://git.heroku.com/cdsi-api.git
+git clone https://github.com/OpenCdsi/cdsi-api
 cd cdsi-api
 yarn
 yarn start:local
